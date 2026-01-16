@@ -1,19 +1,22 @@
 let quizData = [];
 
+// Fetch 10 programming questions from Open Trivia DB
 fetch('https://opentdb.com/api.php?amount=10&category=18&type=multiple')
   .then(response => response.json())
   .then(data => {
+    // Map API data into our quiz format
     quizData = data.results.map(item => {
       const question = item.question;
       const correctAnswer = item.correct_answer;
       const options = [...item.incorrect_answers, item.correct_answer];
-      shuffleArray(options);
-      const answer = options.indexOf(correctAnswer);
+      shuffleArray(options); // Randomize options
+      const answer = options.indexOf(correctAnswer); // Correct option index
       return { question, options, answer };
     });
-    loadQuestion();
+    loadQuestion(); // Load the first question
   });
 
+// Function to shuffle options randomly
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -21,23 +24,26 @@ function shuffleArray(array) {
   }
 }
 
-let currentQuestion = 0;
-let score = 0;
+let currentQuestion = 0; // Track current question index
+let score = 0;           // Track user score
 
+// Get DOM elements
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
 const feedbackEl = document.getElementById("feedback");
 const nextBtn = document.getElementById("nextBtn");
 const scoreEl = document.getElementById("score");
 
+// Load a question onto the page
 function loadQuestion() {
-  feedbackEl.textContent = "";
-  nextBtn.style.display = "none";
-  optionsEl.innerHTML = "";
+  feedbackEl.textContent = "";  // Clear feedback
+  nextBtn.style.display = "none"; // Hide next button
+  optionsEl.innerHTML = "";     // Clear previous options
 
   const current = quizData[currentQuestion];
-  questionEl.textContent = current.question;
+  questionEl.textContent = current.question; // Show question
 
+  // Create buttons for each option
   current.options.forEach((option, index) => {
     const button = document.createElement("button");
     button.textContent = option;
@@ -46,35 +52,39 @@ function loadQuestion() {
   });
 }
 
+// Check if selected answer is correct
 function checkAnswer(selectedIndex, button) {
   const correctIndex = quizData[currentQuestion].answer;
   const buttons = optionsEl.querySelectorAll("button");
 
+  // Disable all buttons after selection
   buttons.forEach(btn => btn.disabled = true);
 
   if (selectedIndex === correctIndex) {
-    button.classList.add("correct");
+    button.classList.add("correct");  // Highlight correct
     feedbackEl.textContent = "Correct Answer!";
-    score++;
+    score++;                           // Increase score
   } else {
-    button.classList.add("wrong");
-    buttons[correctIndex].classList.add("correct");
+    button.classList.add("wrong");     // Highlight wrong
+    buttons[correctIndex].classList.add("correct"); // Show correct
     feedbackEl.textContent = "Wrong Answer!";
   }
 
-  nextBtn.style.display = "block";
+  nextBtn.style.display = "block"; // Show next button
 }
 
+// Go to next question or show result
 nextBtn.addEventListener("click", () => {
   currentQuestion++;
 
   if (currentQuestion < quizData.length) {
-    loadQuestion();
+    loadQuestion(); // Load next question
   } else {
-    showResult();
+    showResult();   // Quiz completed
   }
 });
 
+// Display final score
 function showResult() {
   questionEl.textContent = "Quiz Completed!";
   optionsEl.innerHTML = "";
