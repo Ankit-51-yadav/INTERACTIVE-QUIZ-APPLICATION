@@ -70,10 +70,10 @@ Usage
 5.At the end, view your total score to assess your performance.
 
 ## OUTPUT
-<img width="1747" height="828" alt="Image" src="https://github.com/user-attachments/assets/8e34e5e0-3fb0-4eb1-a5ac-27903a668d59" />
+<img width="1218" height="828" alt="Image" src="https://github.com/user-attachments/assets/8e34e5e0-3fb0-4eb1-a5ac-27903a668d59" />
 
-<img width="1218" height="752" alt="Image" src="https://github.com/user-attachments/assets/e765ec3c-a1d3-4f98-ade3-26f10e84e012" />
+<img width="1218" height="828" alt="Image" src="https://github.com/user-attachments/assets/e765ec3c-a1d3-4f98-ade3-26f10e84e012" />
 
-<img width="853" height="767" alt="Image" src="https://github.com/user-attachments/assets/7b7c51e7-0499-4ddd-8ed6-dd349758e2ea" />
+<img width="1218" height="828" alt="Image" src="https://github.com/user-attachments/assets/7b7c51e7-0499-4ddd-8ed6-dd349758e2ea" />
 
-<img width="696" height="567" alt="Image" src="https://github.com/user-attachments/assets/d0e3a75f-9439-47a1-a940-fb9940da55e4" />
+<img width="1218" height="828" alt="Image" src="https://github.com/user-attachments/assets/d0e3a75f-9439-47a1-a940-fb9940da55e4" />
